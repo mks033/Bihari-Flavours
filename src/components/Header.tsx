@@ -54,15 +54,15 @@ export default function Header() {
 
   return (
 <header
-  ref={headerRef}
+  ref={headerRef} 
   className="sticky top-0 z-50 border-b border-red-700/40 bg-red-600 text-white"
 >
-  <div className="mx-auto max-w-7xl px-2">
+  <div className="mx-auto max-w-7xl pl-0 px-2">
     {/* One single row */}
     <div className="h-14 grid grid-cols-[auto_1fr_auto] items-center">
       
       {/* LEFT: Menu */}
-      <div className="justify-self-start">
+      <div className="justify-self-start -ml-12">
         <button
           className="inline-flex h-10 w-10 items-center justify-center rounded hover:bg-red-700/50 active:bg-red-800/60 transition"
           onClick={() => setMenuOpen(v => !v)}
@@ -85,7 +85,7 @@ export default function Header() {
       </a>
 
       {/* RIGHT: Actions (Search + Cart) — inside the SAME grid row */}
-      <div className="justify-self-end flex items-center gap-1">
+      <div className="justify-self-end flex items-center gap-1 -mr-9">
         <button
           aria-label="Search"
           className="inline-flex h-10 w-10 items-center justify-center rounded hover:bg-red-700/50 active:bg-red-800/60 transition"

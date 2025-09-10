@@ -86,14 +86,14 @@ const About = () => {
           <div ref={imageRef} className="relative">
             <div className="relative z-10">
               <img
-                src="https://images.pexels.com/photos/3850512/pexels-photo-3850512.jpeg"
+                src="https://img.onmanorama.com/content/dam/mm/en/food/features/images/2023/5/31/bihari-food.jpg/photos/16x9/photo.jpg"
                 alt="Chhath Puja Celebration"
                 className="w-full h-96 object-cover rounded-3xl shadow-2xl"
               />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-red-900">25+</div>
-                  <div className="text-sm text-red-800">Years</div>
+                  <div className="text-2xl font-bold text-red-900"></div>
+                  <div className="text-sm text-red-800"></div>
                 </div>
               </div>
             </div>
