@@ -53,81 +53,66 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      ref={headerRef}
-      className="sticky top-0 z-50 border-b border-red-700/40 bg-red-600 text-white"
-    >
-      <div className="mx-auto max-w-7xl px-2">
-        <div className="h-14 flex items-center justify-between">
-          {/* Left: Logo */}
-          <div ref={logoRef} className="flex items-center gap-2">
-            <button
-              className="p-2 rounded hover:bg-red-700/50 active:bg-red-800/60 transition"
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              title={menuOpen ? "Close menu" : "Open menu"}
-            >
-              {menuOpen ? <XIcon /> : <MenuIcon />}
-            </button>
-            {/* Update the src path to your real logo file */}
-            <a href="/" className="flex items-center gap-2">
-              <img
-                src="/logo.png"
-                alt="Bihari Flavours"
-                className="h-14 w-auto"
-                onError={(e) => {
-                  // fallback to text if image missing
-                  (e.currentTarget.style.display = "none");
-                }}
-              />
-              <span className="text-lg font-extrabold tracking-tight"></span>
-            </a>
-          </div>
-
-        
-          {/* Right: Actions (Search + Cart + Mobile toggle) */}
-          <div ref={actionsRef} className="flex items-center gap-1">
-            <button
-              aria-label="Search"
-              className="p-2 rounded hover:bg-red-700/50 active:bg-red-800/60 transition"
-              onClick={() => console.log("Search clicked")}
-              title="Search"
-            >
-              <SearchIcon />
-            </button>
-
-            <button
-              aria-label="Cart"
-              className="relative p-2 rounded hover:bg-red-700/50 active:bg-red-800/60 transition"
-              onClick={openCart}
-              title="Cart"
-            >
-              <CartIcon />
-              {itemCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 text-[10px] leading-none px-1.5 py-0.5 rounded-full bg-black text-white">
-                  {itemCount}
-                </span>
-              )}
-            </button>
-
-            {/* Mobile hamburger */}
-            {/* <button
-              className="md:hidden p-2 rounded hover:bg-red-700/50 active:bg-red-800/60 transition"
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              title={menuOpen ? "Close menu" : "Open menu"}
-            >
-              {menuOpen ? <XIcon /> : <MenuIcon />}
-            </button> */}
-          </div>
-        </div>
+<header
+  ref={headerRef}
+  className="sticky top-0 z-50 border-b border-red-700/40 bg-red-600 text-white"
+>
+  <div className="mx-auto max-w-7xl px-2">
+    {/* One single row */}
+    <div className="h-14 grid grid-cols-[auto_1fr_auto] items-center">
+      
+      {/* LEFT: Menu */}
+      <div className="justify-self-start">
+        <button
+          className="inline-flex h-10 w-10 items-center justify-center rounded hover:bg-red-700/50 active:bg-red-800/60 transition"
+          onClick={() => setMenuOpen(v => !v)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          title={menuOpen ? "Close menu" : "Open menu"}
+        >
+          {/* ensure consistent icon size */}
+          {menuOpen ? <XIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
+        </button>
       </div>
-      {/* Slide-out Mobile/Side Menu */}
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
-    </header>
 
+      {/* CENTER: Logo */}
+      <a href="/" className="justify-self-center" ref={logoRef}>
+        <img
+          src="/logo.png"
+          alt="Bihari Flavours"
+          className="h-10 w-auto"
+          onError={(e) => { e.currentTarget.style.display = "none"; }}
+        />
+      </a>
 
+      {/* RIGHT: Actions (Search + Cart) — inside the SAME grid row */}
+      <div className="justify-self-end flex items-center gap-1">
+        <button
+          aria-label="Search"
+          className="inline-flex h-10 w-10 items-center justify-center rounded hover:bg-red-700/50 active:bg-red-800/60 transition"
+          onClick={() => console.log("Search clicked")}
+          title="Search"
+        >
+          <SearchIcon className="h-5 w-5" />
+        </button>
 
+        <button
+          aria-label="Cart"
+          className="relative inline-flex h-10 w-10 items-center justify-center rounded hover:bg-red-700/50 active:bg-red-800/60 transition"
+          onClick={openCart}
+          title="Cart"
+        >
+          <CartIcon className="h-5 w-5" />
+          {itemCount > 0 && (
+            <span className="absolute -top-1.5 -right-1.5 text-[10px] leading-none px-1.5 py-0.5 rounded-full bg-black text-white">
+              {itemCount}
+            </span>
+          )}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+</header>
   );
 }
-
